@@ -11,19 +11,17 @@
     "clean": "rm -rf lib",
     "build-watch": "tsc -w",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abbeymart/mcorm-ts.git"
   },
   "keywords": [
-    "testing",
-    "test cases",
-    "test scenarios",
-    "unit testing",
-    "regression testing",
-    "integration testing"
+    "object relational mapping",
+    "orm",
+    "crud",
+    "mongodb operations"
   ],
   "author": "Abi Akindele [abbeymart | mconnect.biz]",
   "license": "MIT",
@@ -42,8 +40,9 @@
   "dependencies": {
     "@mconnect/mcauditlog": "^0.2.1",
     "@mconnect/mccache": "^0.3.0",
+    "@mconnect/mccrudmg": "^0.2.6",
     "@mconnect/mcresponse": "^0.2.0",
-    "@mconnect/mcutils": "^0.2.1",
+    "@mconnect/mcutils": "^0.2.4",
     "lodash": "^4.17.20",
     "mongodb": "^3.6.3",
     "validator": "^10.11.0"
