@@ -2,7 +2,7 @@
 
 ## Version 0.2.0
 
-- Release date: Dec 18, 2020
+- Release date: TBD
 - npm/github publication: refactor, test, build and release
 
 ## Version 0.1.0

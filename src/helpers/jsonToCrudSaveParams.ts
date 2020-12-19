@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: client-json-request to crudSaveParams
  */
 
-import { DataTypes, FieldDescType, FieldValueTypes, ModelType, ValueParamsType } from "../ormTypes";
+import { DataTypes, FieldDescType, FieldValueTypes, ModelType, ValueParamsType } from "../types";
 
 export function jsonToCrudSaveParams(model: ModelType, docValue: ValueParamsType): ValueParamsType {
     try {

@@ -5,12 +5,12 @@
  * @Description: mc-central-ts: DeleteDoc testing
  */
 
-import { mcTest, assertEquals, postTestResult } from "../../mc-test/src";
-import { DeleteDoc, newDeleteDoc } from "../";
+import { mcTest, assertEquals, postTestResult } from "@mconnect/mctest";
+import { DeleteDoc, newDeleteDoc } from "../src";   // from mc-crud-mg
 import { userInfo, dbName } from "./appUser";
 import { newDbMongo } from "../../mc-db/src";
 import { dbs } from "../../mc-db/test/config/dbConfig";
-import { CrudTaskType } from "../";
+import { CrudTaskType } from "../src";  // from mc-crud-mg
 
 let coll = 'locations',
     docIds: Array<string> = [],

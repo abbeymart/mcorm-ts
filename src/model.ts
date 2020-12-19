@@ -11,7 +11,7 @@ import {
     ComputedMethodsType, DataTypes, DefaultValueType, DocDescType,
     FieldDescType, ModelOptionsType, ModelRelationType, ModelType,
     ValidateMethodsType, ValueParamsType, ValueToDataTypes,
-} from "./ormTypes";
+} from "./types";
 import {
     ValidateResponseType, FieldValueTypes, CrudTaskType, CrudOptionsType,
     newDeleteRecord, newGetRecord, newGetRecordStream, newSaveRecord, MessageObject

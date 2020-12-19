@@ -7,7 +7,7 @@
 
 // import fs = require("fs");
 import * as fs from 'fs';
-import { ModelRelationType } from "./ormTypes";
+import { ModelRelationType } from "./types";
 
 export function saveDbRelations(relations: Array<ModelRelationType>): Set<ModelRelationType> {
     let relationsDb: Set<ModelRelationType>;

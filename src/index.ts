@@ -5,6 +5,6 @@
  * @Description: mc-central-ts: mc-orm for mongoDb
  */
 
-// export * from  "./src/ormTypes";
-// export * from "./src/model";
+export * from "./types";
+export * from "./model";
 // export * from "./src/crud"
