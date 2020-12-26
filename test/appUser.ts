@@ -4,7 +4,7 @@
  * @License: All Rights Reserved | LICENSE.md
  * @Description: mc-central-ts: bookmark socket.io
  */
-import { UserInfoType } from "../";
+import { UserInfoType } from "@mconnect/mccrudmg";
 
 export const dbName = "mc-central";
 
@@ -32,7 +32,7 @@ export const userInfo: UserInfoType = {
     lastName : "Akindele",
     loginName: "abbeya1@yahoo.com",
     userId   : "5b0e139b3151184425aae01c",
-    groups   : [],
+    expire   : 2120000000,
 };
 
 export const inValidUserInfo: UserInfoType = {
@@ -44,7 +44,7 @@ export const inValidUserInfo: UserInfoType = {
     lastName : "Akindele",
     loginName: "abbeya1@yahoo.com",
     userId   : "5b0e139b3151184425aae09c",
-    groups   : [],
+    expire   : 2120000000,
 };
 
 export const token = "1724091e4c2828cf095c00ddb21114fd3c8afc424d0b7da7d94c963a92d206a8";

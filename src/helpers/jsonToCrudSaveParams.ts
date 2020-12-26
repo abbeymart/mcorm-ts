@@ -5,7 +5,8 @@
  * @Description: mc-central-ts: client-json-request to crudSaveParams
  */
 
-import { DataTypes, FieldDescType, FieldValueTypes, ModelType, ValueParamsType } from "../types";
+import {FieldValueTypes} from "@mconnect/mccrudmg"
+import { DataTypes, FieldDescType, ModelType, ValueParamsType } from "../types";
 
 export function jsonToCrudSaveParams(model: ModelType, docValue: ValueParamsType): ValueParamsType {
     try {
@@ -31,10 +32,6 @@ export function jsonToCrudSaveParams(model: ModelType, docValue: ValueParamsType
                 case desc as FieldDescType:
                     result = fieldDescTypeETL(desc, docValue);
                     desc.fieldType
-                    break;
-                case desc as ModelType:
-                    // recursive action
-                    jsonToCrudSaveParams(desc as ModelType, docValue);
                     break;
                 default:
                     result[name] = docValue[name];

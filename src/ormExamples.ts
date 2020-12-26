@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: bookmark socket.io
  */
 
-import { DataTypes, ModelType } from "../../mc-types";
+import { DataTypes, ModelType } from "./types";
 
 const UserProfileModel: ModelType = {
     collName: "userProfiles",
@@ -35,7 +35,7 @@ const UserModel: ModelType = {
             fieldType  : DataTypes.STRING,
             fieldLength: 25,
         },
-        profile   : UserProfileModel,
+        profile   : DataTypes.OBJECT,
         firstName : {
             fieldType  : DataTypes.STRING,
             fieldLength: 255,

@@ -15,9 +15,8 @@ import {
 import {
     ValidateResponseType, FieldValueTypes, CrudTaskType, CrudOptionsType,
     newDeleteRecord, newGetRecord, newGetRecordStream, newSaveRecord, MessageObject
-} from "../../mc-crud-mg/src";
-import { getResMessage, ResponseMessage } from "../../mc-response/src";
-import { getParamsMessage } from "../../mc-utils/src";
+} from "@mconnect/mccrudmg";
+import { getResMessage, ResponseMessage, getParamsMessage } from "@mconnect/mcresponse";
 import { Cursor } from "mongodb";
 
 export class Model {
@@ -137,7 +136,7 @@ export class Model {
         let computedType: ValueToDataTypes = {};
         try {
             for (const key in Object.keys(docValue)) {
-                const modelDocValue = docValue[key];
+                const modelDocValue: any = docValue[key];
                 if (Array.isArray(modelDocValue)) {
                     if (modelDocValue.every((item: any) => typeof item === "number")) {
                         computedType[key] = DataTypes.ARRAY_NUMBER;
@@ -308,7 +307,7 @@ export class Model {
                                     docFieldDesc.validateMessage : `Value is required for:  ${key}.}`;
                             }
                             if (docValueTypes[key] === DataTypes.STRING && docFieldDesc.fieldLength) {
-                                const fieldLength = docFieldValue.toString().length;
+                                const fieldLength = docFieldValue?.toString().length || 0;
                                 if (fieldLength > docFieldDesc.fieldLength) {
                                     validateErrors[`${key}-lengthValidation`] = docFieldDesc.validateMessage ?
                                         docFieldDesc.validateMessage : `Size of ${key} cannot be longer than ${docFieldDesc.fieldLength}`;
@@ -319,17 +318,17 @@ export class Model {
                                 docValueTypes[key] === DataTypes.DECIMAL)
                             ) {
                                 if (docFieldDesc.minValue && docFieldDesc.maxValue) {
-                                    if (docFieldValue < docFieldDesc.minValue || docFieldValue > docFieldDesc.maxValue) {
+                                    if (docFieldValue && (docFieldValue < docFieldDesc.minValue || docFieldValue > docFieldDesc.maxValue)) {
                                         validateErrors[`${key}-minMaxValidation`] = docFieldDesc.validateMessage ?
                                             docFieldDesc.validateMessage : `Value of: ${key} must be greater than ${docFieldDesc.minValue}, and less than ${docFieldDesc.maxValue}`;
                                     }
                                 } else if (docFieldDesc.minValue) {
-                                    if (docFieldValue < docFieldDesc.minValue) {
+                                    if (docFieldValue && docFieldValue < docFieldDesc.minValue) {
                                         validateErrors[`${key}-minMaxValidation`] = docFieldDesc.validateMessage ?
                                             docFieldDesc.validateMessage : `Value of: ${key} cannot be less than ${docFieldDesc.minValue}. `;
                                     }
                                 } else if (docFieldDesc.maxValue) {
-                                    if (docFieldValue > docFieldDesc.maxValue) {
+                                    if (docFieldValue && docFieldValue > docFieldDesc.maxValue) {
                                         validateErrors[`${key}-minMaxValidation`] = docFieldDesc.validateMessage ?
                                             docFieldDesc.validateMessage : `Value of: ${key} cannot be greater than ${docFieldDesc.maxValue}. `;
                                     }
@@ -362,7 +361,8 @@ export class Model {
             // return success
             return {ok: true, errors: {}};
         } catch (e) {
-            throw new Error(e.message);
+            // throw new Error(e.message);
+            return {ok: true, errors: e};
         }
     }
 
@@ -386,8 +386,8 @@ export class Model {
                     const modelDocValue = await this.updateDefaultValues(docValue);
                     // validate actionParam-item (docValue) field-value
                     const validateRes = await this.validateDocValue(modelDocValue, taskName);
-                    if (!validateRes.ok || (validateRes.errors && Object.keys(validateRes.errors).length > 0)) {
-                        return getParamsMessage(validateRes.errors);
+                    if (validateRes && !validateRes.ok || ( validateRes.errors && Object.keys(validateRes.errors).length > 0)) {
+                        return getParamsMessage(validateRes.errors as MessageObject);
                     }
                     // update actParams
                     actParams.push(modelDocValue)

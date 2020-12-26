@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: orm types
  */
 
-import { FieldValueTypes, ValidateResponseType } from "../../mc-crud-mg/src";
+import { FieldValueTypes, ValidateResponseType } from "@mconnect/mccrudmg";
 
 export enum DataTypes {
     STRING = "string",
@@ -159,4 +159,13 @@ export interface ModelOptionsType {
     activeStamp?: boolean;      // auto-add isActive, if not already set | default: true
     docValueDesc?: DocDescType;
     docValue?: ValueParamsType;
+}
+
+export interface ErrorType {
+    [key: string]: string;
+}
+
+export interface ValidateResponseType {
+    ok: boolean;
+    errors?: ErrorType;
 }
