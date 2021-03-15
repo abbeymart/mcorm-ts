@@ -38,9 +38,10 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@mconnect/mcauditlog": "^0.2.1",
+    "@mconnect/mcauditlog": "^0.2.3",
     "@mconnect/mccache": "^0.3.0",
-    "@mconnect/mccrudmg": "^0.2.6",
+    "@mconnect/mccrudmg": "^0.2.8",
+    "@mconnect/mcdb": "^0.2.5",
     "@mconnect/mcresponse": "^0.4.0",
     "@mconnect/mcutils": "^0.2.4",
     "lodash": "^4.17.20",
