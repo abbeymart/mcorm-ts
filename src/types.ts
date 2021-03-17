@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: orm types
  */
 
-import { FieldValueTypes, ValidateResponseType } from "@mconnect/mccrudmg";
+import { FieldValueTypes } from "@mconnect/mccrudmg";
 
 export enum DataTypes {
     STRING = "string",
